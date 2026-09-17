@@ -1,3 +1,4 @@
+alert("Script loaded successfully!");
 // ==========================================
 // 1. DATABASE CONFIGURATION
 // ==========================================
