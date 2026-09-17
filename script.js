@@ -1,35 +1,15 @@
 // ==========================================
 // 1. DATABASE CONFIGURATION
 // ==========================================
-// Replace these placeholders with your actual Supabase credentials
-const SUPABASE_URL = "https://hxysisxphqptlhbnxnhg.supabase.co/rest/v1/";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eXNpc3hwaHFwdGxoYm54bmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2MTM1NDcsImV4cCI6MjEwNTE4OTU0N30.2GovZUPO0HSUxEPuOeDO8D-pvsSCNwWOK8bZxMzBB5k";
+// Base URL (Removed /rest/v1/)
+const SUPABASE_URL = "https://hxysisxphqptlhbnxnhg.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eXNpc3hwaHFwdGxoYm54bmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2MTM1NDcsImV4cCI6MjEwNTE4OTU0N30.2GovZUPO0HSUxEPuOeDO8D-pvsSCNwWOK8bZxMzBB5k";
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-document.getElementById('tutor-form').addEventListener('submit', async (e) => {
-  e.preventDefault(); // Prevents the browser from reloading
-
-  const tutorName = document.getElementById('tutor-name').value;
-  const subject = document.getElementById('subject').value;
-
-  // Insert data into your Supabase table
-  const { data, error } = await supabase
-    .from('tutors') // Make sure 'tutors' matches your Supabase table name
-    .insert([{ name: tutorName, subject: subject }]);
-
-  if (error) {
-    alert('Error adding tutor: ' + error.message);
-  } else {
-    alert('Tutor added successfully!');
-  }
-});
-
-
-
+// Correct Client Initialization
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ==========================================
-// 2. MODEL CLASS (Encapsulation Architecture)
+// 2. MODEL CLASS
 // ==========================================
 class Tutor {
     constructor(id, name, subject, rate) {
@@ -45,11 +25,10 @@ class Tutor {
 // ==========================================
 class TutoringSystem {
     constructor() {
-        // Fetch data from cloud automatically when system boots
         this.fetchFromCloud();
     }
 
-    // [READ] Pulls live rows from the database table
+    // [READ]
     async fetchFromCloud() {
         const { data, error } = await supabase
             .from('tutors')
@@ -63,7 +42,7 @@ class TutoringSystem {
         this.updateVisualDisplay(data);
     }
 
-    // [CREATE] Inserts a new row into the database table
+    // [CREATE]
     async addTutor(name, subject, rate) {
         const { error } = await supabase
             .from('tutors')
@@ -72,11 +51,11 @@ class TutoringSystem {
         if (error) {
             alert('Database insertion failed: ' + error.message);
         } else {
-            this.fetchFromCloud(); // Refresh the list
+            this.fetchFromCloud(); // Refresh list
         }
     }
 
-    // [DELETE] Removes a row from the database table matching the ID
+    // [DELETE]
     async removeTutor(id) {
         const { error } = await supabase
             .from('tutors')
@@ -86,7 +65,7 @@ class TutoringSystem {
         if (error) {
             alert('Database extraction failed: ' + error.message);
         } else {
-            this.fetchFromCloud(); // Refresh the list
+            this.fetchFromCloud(); // Refresh list
         }
     }
 
@@ -106,9 +85,9 @@ class TutoringSystem {
             const card = document.createElement('div');
             card.className = 'tutor-card';
             card.innerHTML = `
-                <h3>ðŸ‘¤ ${tutor.name}</h3>
+                <h3>👤 ${tutor.name}</h3>
                 <p><strong>Focus:</strong> ${tutor.subject}</p>
-                <p class="rate">â‚±${tutor.rate}/hr</p>
+                <p class="rate">₱${tutor.rate}/hr</p>
                 <button class="delete-btn" onclick="systemInstance.removeTutor('${tutor.id}')">Delete</button>
             `;
             grid.appendChild(card);
@@ -116,10 +95,9 @@ class TutoringSystem {
     }
 }
 
-// Instantiate Global System Controller Instance
+// Instantiate Global System Controller
 const systemInstance = new TutoringSystem();
 window.systemInstance = systemInstance;
-
 
 // ==========================================
 // 5. INPUT EVENT BINDINGS
@@ -130,7 +108,7 @@ document.getElementById('addBtn').addEventListener('click', () => {
     const rateInput = document.getElementById('tutorRate');
 
     if (!nameInput.value || !subjectInput.value || !rateInput.value) {
-        alert('Please fill out all layout entries completely.');
+        alert('Please fill out all fields completely.');
         return;
     }
 
@@ -140,8 +118,8 @@ document.getElementById('addBtn').addEventListener('click', () => {
         parseFloat(rateInput.value)
     );
 
-    // Clear user entry configurations for next record
     nameInput.value = '';
     subjectInput.value = '';
     rateInput.value = '';
 });
+
