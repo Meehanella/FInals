@@ -6,18 +6,15 @@
     <title>Tutoring Management Software</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- 1. Supabase Library CDN (MUST BE PLACED FIRST) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <!-- 2. Your JavaScript File -->
-  <script src="script.js" defer></script>
-
-    
+    <!-- Supabase Library CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Your JavaScript File -->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1> TutorRegistry </h1>
+            <h1>TutorRegistry</h1>
             <p>Visual Web Management System</p>
         </header>
 
@@ -37,24 +34,18 @@
                     <label>Hourly Rate (PHP)</label>
                     <input type="number" id="tutorRate" placeholder="e.g., 500">
                 </div>
-                <button id="addBtn" class="primary-btn">âž• Add Tutor Record</button>
+                <button id="addBtn" class="primary-btn">➕ Add Tutor Record</button>
             </section>
 
             <!-- Right Panel: Data Display Grid -->
             <section class="display-panel">
                 <h2>Active Tutors List (Cloud Database)</h2>
                 <div id="tutorGrid" class="tutor-grid">
-                    <!-- Dynamic OOP Object cards load here -->
+                    <!-- Dynamic cards load here -->
                 </div>
             </section>
         </main>
     </div>
-
-    <!-- Supabase Cloud Engine Integration -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
 </body>
 </html>
-
-
 
