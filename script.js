@@ -5,7 +5,28 @@
 const SUPABASE_URL = "https://hxysisxphqptlhbnxnhg.supabase.co/rest/v1/";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eXNpc3hwaHFwdGxoYm54bmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2MTM1NDcsImV4cCI6MjEwNTE4OTU0N30.2GovZUPO0HSUxEPuOeDO8D-pvsSCNwWOK8bZxMzBB5k";
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+document.getElementById('tutor-form').addEventListener('submit', async (e) => {
+  e.preventDefault(); // Prevents the browser from reloading
+
+  const tutorName = document.getElementById('tutor-name').value;
+  const subject = document.getElementById('subject').value;
+
+  // Insert data into your Supabase table
+  const { data, error } = await supabase
+    .from('tutors') // Make sure 'tutors' matches your Supabase table name
+    .insert([{ name: tutorName, subject: subject }]);
+
+  if (error) {
+    alert('Error adding tutor: ' + error.message);
+  } else {
+    alert('Tutor added successfully!');
+  }
+});
+
+
+
 
 // ==========================================
 // 2. MODEL CLASS (Encapsulation Architecture)
