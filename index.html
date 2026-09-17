@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutoring Management Software</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Supabase Library CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Your JavaScript File -->
-    <script src="script.js?v=2" defer></script>
-
 </head>
 <body>
     <div class="app-container">
@@ -44,6 +38,16 @@
                 <div id="tutorGrid" class="tutor-grid">
                     <!-- Dynamic cards load here -->
                 </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Load Supabase Library First, then Script at the bottom of <body> -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js?v=999"></script>
+</body>
+</html>
+
             </section>
         </main>
     </div>
