@@ -1,4 +1,5 @@
-alert("Script loaded successfully!");
+alert("JS File Active!");
+
 // ==========================================
 // 1. DATABASE CONFIGURATION
 // ==========================================
