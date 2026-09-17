@@ -3,7 +3,7 @@
 // ==========================================
 // Replace these placeholders with your actual Supabase credentials
 const SUPABASE_URL = "https://hxysisxphqptlhbnxnhg.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_0HPM6gPyu-YfugIbbEbtzw_CBDlj9Dw";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eXNpc3hwaHFwdGxoYm54bmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2MTM1NDcsImV4cCI6MjEwNTE4OTU0N30.2GovZUPO0HSUxEPuOeDO8D-pvsSCNwWOK8bZxMzBB5k";
 
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
