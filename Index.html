@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoring Management Software</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>ðŸ“š TutorRegistry Pro</h1>
+            <p>Visual Web Management System</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Left Panel: User Input Form -->
+            <section class="form-panel">
+                <h2>Register New Tutor</h2>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="tutorName" placeholder="e.g., Prof. Juan Dela Cruz">
+                </div>
+                <div class="input-group">
+                    <label>Specialization / Subject</label>
+                    <input type="text" id="tutorSubject" placeholder="e.g., Advanced Java OOP">
+                </div>
+                <div class="input-group">
+                    <label>Hourly Rate (PHP)</label>
+                    <input type="number" id="tutorRate" placeholder="e.g., 500">
+                </div>
+                <button id="addBtn" class="primary-btn">âž• Add Tutor Record</button>
+            </section>
+
+            <!-- Right Panel: Data Display Grid -->
+            <section class="display-panel">
+                <h2>Active Tutors List (Cloud Database)</h2>
+                <div id="tutorGrid" class="tutor-grid">
+                    <!-- Dynamic OOP Object cards load here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Supabase Cloud Engine Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
